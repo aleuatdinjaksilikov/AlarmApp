@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item android:id="@+id/alarmFragment"
+        android:title="@string/Будильник"
+        android:icon="@drawable/ic_alarm"/>
+
+    <item android:id="@+id/watchFragment"
+        android:title="@string/Часы"
+        android:icon="@drawable/ic_watch"/>
+
+    <item android:id="@+id/timerFragment"
+        android:title="@string/Таймер"
+        android:icon="@drawable/ic_timer"/>
+
+    <item android:id="@+id/stopWatchFragment"
+        android:title="@string/Секундомер"
+        android:icon="@drawable/ic_stopwatch"/>
+
+    <item android:id="@+id/sleepingFragment"
+        android:title="@string/Режимсна"
+        android:icon="@drawable/ic_airline_seat"/>
+
+
+</menu>

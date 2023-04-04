@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/alarmFragment">
+
+    <fragment
+        android:id="@+id/alarmFragment"
+        android:name="com.example.myalarmapp.ui.fragments.Alarm.AlarmFragment"
+        android:label="AlarmFragment"
+        tools:layout="@layout/fragment_alarm"/>
+    <fragment
+        android:id="@+id/watchFragment"
+        android:name="com.example.myalarmapp.ui.fragments.Watch.WatchFragment"
+        android:label="WatchFragment"
+        tools:layout="@layout/fragment_watch"/>
+    <fragment
+        android:id="@+id/timerFragment"
+        android:name="com.example.myalarmapp.ui.fragments.Timer.TimerFragment"
+        android:label="TimerFragment"
+        tools:layout="@layout/fragment_timer"/>
+    <fragment
+        android:id="@+id/stopWatchFragment"
+        android:name="com.example.myalarmapp.ui.fragments.Stopwatch.StopwatchFragment"
+        android:label="StopwatchFragment"
+        tools:layout="@layout/fragment_stopwatch"/>
+    <fragment
+        android:id="@+id/sleepingFragment"
+        android:name="com.example.myalarmapp.ui.fragments.Sleeping.SleepingFragment"
+        android:label="SleepingFragment"
+        tools:layout="@layout/fragment_sleeping"/>
+</navigation>
