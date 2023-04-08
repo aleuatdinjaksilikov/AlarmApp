@@ -1,7 +1,7 @@
-package com.example.myalarmapp.data.locale.dao
+package com.example.myalarmapp.data.dao
 
 import androidx.room.*
-import com.example.myalarmapp.data.locale.models.AlarmData
+import com.example.myalarmapp.data.models.AlarmData
 
 @Dao
 interface AppDao {

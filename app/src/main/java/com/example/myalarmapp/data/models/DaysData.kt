@@ -1,4 +1,4 @@
-package com.example.myalarmapp.data.locale.models
+package com.example.myalarmapp.data.models
 
 import android.widget.TextView
 

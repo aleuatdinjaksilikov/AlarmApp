@@ -1,11 +1,10 @@
-package com.example.myalarmapp.ui.fragments
+package com.example.myalarmapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
-import com.example.myalarmapp.R
 import com.example.myalarmapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

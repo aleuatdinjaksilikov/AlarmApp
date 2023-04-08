@@ -1,4 +1,4 @@
-package com.example.myalarmapp.ui.fragments.alarm
+package com.example.myalarmapp.ui.alarm
 
 import android.graphics.Color
 import android.util.Log
@@ -7,15 +7,15 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myalarmapp.R
 import com.example.myalarmapp.databinding.RcItemAlarmBinding
-import com.example.myalarmapp.data.locale.models.AlarmData
-import com.example.myalarmapp.data.locale.models.DaysData
+import com.example.myalarmapp.data.models.AlarmData
+import com.example.myalarmapp.data.models.DaysData
 
 class AlarmAdapter:RecyclerView.Adapter<AlarmAdapter.MyViewHolder>() {
-    private var onClickSwitchListener : ((RcItemAlarmBinding,AlarmData)->Unit)? = null
-    private var onClickDeleteItemListener : ((RcItemAlarmBinding,AlarmData,position:Int)->Unit)? = null
+    private var onClickSwitchListener : ((RcItemAlarmBinding, AlarmData)->Unit)? = null
+    private var onClickDeleteItemListener : ((RcItemAlarmBinding, AlarmData, position:Int)->Unit)? = null
 
-    private var onClickDaysOfWeekListener1 : ((RcItemAlarmBinding, AlarmData,MutableList<DaysData>)->Unit)? = null
-    private var onClickDaysOfWeekListener2 : ((RcItemAlarmBinding, AlarmData,MutableList<DaysData>)->Unit)? = null
+    private var onClickDaysOfWeekListener1 : ((RcItemAlarmBinding, AlarmData, MutableList<DaysData>)->Unit)? = null
+    private var onClickDaysOfWeekListener2 : ((RcItemAlarmBinding, AlarmData, MutableList<DaysData>)->Unit)? = null
     private var onClickDaysOfWeekListener3 : ((RcItemAlarmBinding, AlarmData)->Unit)? = null
 
     var daysDataList = mutableListOf<DaysData>()
@@ -27,7 +27,7 @@ class AlarmAdapter:RecyclerView.Adapter<AlarmAdapter.MyViewHolder>() {
     }
 
     inner class MyViewHolder(private val binding: RcItemAlarmBinding):RecyclerView.ViewHolder(binding.root){
-        fun setData(alarmData: AlarmData,position: Int){
+        fun setData(alarmData: AlarmData, position: Int){
 
             binding.tvClock.text = "${alarmData.timeHour}:${alarmData.timeMinute}"
             Log.d("TimeTime","${alarmData.timeHour}:${alarmData.timeMinute}")
@@ -105,18 +105,18 @@ class AlarmAdapter:RecyclerView.Adapter<AlarmAdapter.MyViewHolder>() {
     override fun getItemCount(): Int = list.size
 
 
-    fun setOnSwitchClickListener(block:(RcItemAlarmBinding,AlarmData)->Unit){
+    fun setOnSwitchClickListener(block:(RcItemAlarmBinding, AlarmData)->Unit){
         onClickSwitchListener = block
     }
 
-    fun setOnDeleteItemListener(block:(RcItemAlarmBinding,AlarmData,position:Int)->Unit){
+    fun setOnDeleteItemListener(block:(RcItemAlarmBinding, AlarmData, position:Int)->Unit){
         onClickDeleteItemListener = block
     }
 
-    fun setOnClickDaysOfWeek1(block:(RcItemAlarmBinding, AlarmData,MutableList<DaysData>)->Unit){
+    fun setOnClickDaysOfWeek1(block:(RcItemAlarmBinding, AlarmData, MutableList<DaysData>)->Unit){
         onClickDaysOfWeekListener1 = block
     }
-    fun setOnClickDaysOfWeek2(block:(RcItemAlarmBinding, AlarmData,MutableList<DaysData>)->Unit){
+    fun setOnClickDaysOfWeek2(block:(RcItemAlarmBinding, AlarmData, MutableList<DaysData>)->Unit){
         onClickDaysOfWeekListener2 = block
     }
     fun setOnClickDaysOfWeek3(block:(RcItemAlarmBinding, AlarmData)->Unit){

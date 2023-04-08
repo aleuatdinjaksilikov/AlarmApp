@@ -1,4 +1,4 @@
-package com.example.myalarmapp.ui.fragments.watch
+package com.example.myalarmapp.ui.watch
 
 import android.icu.util.Calendar
 import android.os.Bundle

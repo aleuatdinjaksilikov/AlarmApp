@@ -1,4 +1,4 @@
-package com.example.myalarmapp.ui.fragments.alarm
+package com.example.myalarmapp.ui.alarm
 
 import android.graphics.Color
 import android.icu.util.Calendar
@@ -12,10 +12,9 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myalarmapp.R
-import com.example.myalarmapp.data.locale.AppDatabase
-import com.example.myalarmapp.data.locale.dao.AppDao
-import com.example.myalarmapp.data.locale.models.AlarmData
-import com.example.myalarmapp.data.locale.models.DaysData
+import com.example.myalarmapp.data.AppDatabase
+import com.example.myalarmapp.data.dao.AppDao
+import com.example.myalarmapp.data.models.AlarmData
 import com.example.myalarmapp.databinding.FragmentAlarmBinding
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.MaterialTimePicker.INPUT_MODE_CLOCK

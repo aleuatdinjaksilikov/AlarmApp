@@ -1,4 +1,4 @@
-package com.example.myalarmapp.ui.fragments.sleeping
+package com.example.myalarmapp.ui.sleeping
 
 import android.os.Bundle
 import android.view.View

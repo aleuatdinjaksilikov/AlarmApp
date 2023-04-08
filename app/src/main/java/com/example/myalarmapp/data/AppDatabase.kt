@@ -1,23 +1,23 @@
-package com.example.myalarmapp.data.locale
+package com.example.myalarmapp.data
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.myalarmapp.data.locale.dao.AppDao
-import com.example.myalarmapp.data.locale.models.AlarmData
+import com.example.myalarmapp.data.dao.AppDao
+import com.example.myalarmapp.data.models.AlarmData
 
 
 @Database(entities = [AlarmData::class], version = 1)
 abstract class AppDatabase:RoomDatabase() {
 
-    abstract fun getDao():AppDao
+    abstract fun getDao(): AppDao
 
     companion object{
 
         const val DATABASE_NAME = "db_name"
 
-        fun getInstance(context: Context):AppDatabase{
+        fun getInstance(context: Context): AppDatabase {
             return Room.databaseBuilder(
                 context,
                 AppDatabase::class.java,
