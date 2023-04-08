@@ -18,19 +18,32 @@
         <item name="android:color">@color/ActiveIndicator</item>
     </style>
 
-<!--    <style name="MyTimePickerDialogTheme" parent="ThemeOverlay.Material3.MaterialTimePicker">-->
-<!--        <item name="colorSurface">#202429</item>-->
-<!--        <item name="colorPrimary">#2A2E33</item>-->
-<!--        <item name="colorOnPrimary">#202429</item>-->
-<!--        <item name="colorControlActivated">#2A2E33</item>-->
-<!--        <item name="colorControlNormal">#FFFFFF</item>-->
-<!--    </style>-->
+    
+    <style name="ShapeableImageViewStyle" parent="">
+        <item name="cornerSize">50%</item>
+    </style>
 
+    
+    <style name="MyThemeTimePicker" parent="ThemeOverlay.Material3.MaterialTimePicker">
+        <item name="colorPrimary">#2A2E33</item>
+        <item name="colorOnPrimary">#202429</item>
+        <item name="colorOnSurface">@color/white</item>
+        <item name="colorOnPrimaryContainer">#FFFFFF</item>
+        <item name="clockNumberTextColor">@color/white</item>
+        <item name="borderlessButtonStyle">@style/borderlessButtonStyle</item>
+    </style>
+    
+    <style name="borderlessButtonStyle" parent="ThemeOverlay.Material3.Button.TextButton">
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
 
+<!--        <style name="MyTimePickerDialogTheme" parent="ThemeOverlay.Material3.MaterialTimePicker">-->
+<!--            <item name="colorSurface">#202429</item>-->
+<!--            <item name="colorPrimary">#2A2E33</item>-->
+<!--            <item name="colorOnPrimary">#202429</item>-->
+<!--            <item name="colorControlActivated">#2A2E33</item>-->
+<!--            <item name="colorControlNormal">#FFFFFF</item>-->
+<!--        </style>-->
 
-<!--    <style name="AppTheme.FabShapeAppearanceOverlay" parent="">-->
-<!--        <item name="cornerFamily">rounded</item>-->
-<!--        <item name="cornerSize">50%</item>-->
-<!--    </style>-->
 
 </resources>

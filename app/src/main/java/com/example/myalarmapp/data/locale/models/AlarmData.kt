@@ -8,8 +8,8 @@ import androidx.room.PrimaryKey
 data class AlarmData (
     @PrimaryKey(autoGenerate = true)
     val id:Int,
-    val timeHour : Int,
-    val timeMinute : Int,
-    val installed : Boolean,
-    val daysOfWeek : Int
+    var timeHour : Int,
+    var timeMinute : Int,
+    var installed : Boolean,
+    var daysOfWeek : Int
         )

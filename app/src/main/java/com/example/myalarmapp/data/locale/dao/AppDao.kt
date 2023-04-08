@@ -15,6 +15,7 @@ interface AppDao {
   @Update(onConflict = OnConflictStrategy.REPLACE)
   suspend fun updateAlarm(alarmData: AlarmData)
 
-
+  @Delete(entity = AlarmData::class)
+  suspend fun deleteAlarm(alarmData: AlarmData)
 
 }

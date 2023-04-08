@@ -1,4 +1,4 @@
-package com.example.myalarmapp.ui.fragments.Stopwatch
+package com.example.myalarmapp.ui.fragments.stopwatch
 
 import android.os.Bundle
 import android.view.View

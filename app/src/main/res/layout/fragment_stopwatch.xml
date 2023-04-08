@@ -80,25 +80,21 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/btn_add"
         android:layout_width="110dp"
         android:layout_height="110dp"
-        android:layout_marginBottom="15dp"
-        android:backgroundTint="#93CCFF"
-        app:cardElevation="10dp"
-        app:cardPreventCornerOverlap="true"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/ripple_effect_btn_add"
+        android:contentDescription="TODO"
+        app:srcCompat="@drawable/ic_play"
+        app:contentPadding="42dp"
+        android:clickable="true"
+        android:focusable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:cardCornerRadius="90dp">
+        app:layout_constraintStart_toStartOf="parent"
+        app:shapeAppearance="@style/ShapeableImageViewStyle" />
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_play"
-            android:layout_gravity="center"/>
-
-
-    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,47 +6,47 @@
     android:background="@color/bg_fragments"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <View
         android:id="@+id/toolbar"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
+        android:background="@color/statusBarColor"
+        android:alpha="0"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"/>
 
-        <TextView
-            android:id="@+id/tv_alarm"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="15dp"
-            android:fontFamily="@font/rubik"
-            android:text="@string/Будильник"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/tv_alarm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/rubik"
+        android:translationZ="10dp"
+        android:text="@string/Будильник"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="fill_vertical"
-            android:layout_margin="8dp"
-            android:padding="8dp"
-            android:src="@drawable/ic_menu"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_alarm"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tv_alarm" />
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="fill_vertical"
+        android:layout_margin="8dp"
+        android:padding="8dp"
+        android:translationZ="10dp"
+        android:src="@drawable/ic_menu"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_alarm"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_alarm" />
     
     
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_alarmFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="15dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:orientation="vertical"
         app:layout_constraintTop_toBottomOf="@id/toolbar"
@@ -54,31 +54,26 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:listitem="@layout/rc_item_alarm"/>
-    
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/btn_add"
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/btnAddAlarm"
         android:layout_width="110dp"
         android:layout_height="110dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/ripple_effect_btn_add"
+        android:contentDescription="TODO"
+        app:srcCompat="@drawable/ic_add"
+        app:contentPadding="42dp"
         android:clickable="true"
-        android:backgroundTint="#93CCFF"
-        app:cardCornerRadius="90dp"
-        android:elevation="10dp"
-        android:translationZ="10dp"
-        android:layout_marginBottom="15dp"
-        android:foreground="@drawable/ripple_effect_btn_add"
+        android:focusable="true"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:focusable="true">
+        app:layout_constraintStart_toStartOf="parent"
+        app:shapeAppearance="@style/ShapeableImageViewStyle" />
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:src="@drawable/ic_add"/>
 
-    </androidx.cardview.widget.CardView>
+
 
 
 

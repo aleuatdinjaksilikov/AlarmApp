@@ -1,4 +1,4 @@
-package com.example.myalarmapp.ui.fragments.Timer
+package com.example.myalarmapp.ui.fragments.timer
 
 import android.os.Bundle
 import android.view.View

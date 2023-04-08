@@ -2,6 +2,6 @@
 <ripple xmlns:android="http://schemas.android.com/apk/res/android"
     android:color="#7E7878">
 
-
+    <item android:drawable="@drawable/bg_btn_add"/>
 
 </ripple>

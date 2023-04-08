@@ -7,27 +7,27 @@
 
     <fragment
         android:id="@+id/alarmFragment"
-        android:name="com.example.myalarmapp.ui.fragments.Alarm.AlarmFragment"
+        android:name="com.example.myalarmapp.ui.fragments.alarm.AlarmFragment"
         android:label="AlarmFragment"
         tools:layout="@layout/fragment_alarm"/>
     <fragment
         android:id="@+id/watchFragment"
-        android:name="com.example.myalarmapp.ui.fragments.Watch.WatchFragment"
+        android:name="com.example.myalarmapp.ui.fragments.watch.WatchFragment"
         android:label="WatchFragment"
         tools:layout="@layout/fragment_watch"/>
     <fragment
         android:id="@+id/timerFragment"
-        android:name="com.example.myalarmapp.ui.fragments.Timer.TimerFragment"
+        android:name="com.example.myalarmapp.ui.fragments.timer.TimerFragment"
         android:label="TimerFragment"
         tools:layout="@layout/fragment_timer"/>
     <fragment
         android:id="@+id/stopWatchFragment"
-        android:name="com.example.myalarmapp.ui.fragments.Stopwatch.StopwatchFragment"
+        android:name="com.example.myalarmapp.ui.fragments.stopwatch.StopwatchFragment"
         android:label="StopwatchFragment"
         tools:layout="@layout/fragment_stopwatch"/>
     <fragment
         android:id="@+id/sleepingFragment"
-        android:name="com.example.myalarmapp.ui.fragments.Sleeping.SleepingFragment"
+        android:name="com.example.myalarmapp.ui.fragments.sleeping.SleepingFragment"
         android:label="SleepingFragment"
         tools:layout="@layout/fragment_sleeping"/>
 </navigation>

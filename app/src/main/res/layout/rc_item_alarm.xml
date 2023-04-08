@@ -1,78 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:clickable="true"
-    android:background="@drawable/ripple_effect_rc_item_alarm"
-    android:layout_marginTop="10dp"
-    android:layout_marginHorizontal="20dp"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginHorizontal="20dp"
+    android:layout_marginTop="10dp"
+    android:background="@drawable/ripple_effect_rc_item_alarm"
+    android:clickable="true"
     android:focusable="true">
 
     <TextView
         android:id="@+id/tv_clock"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/rubik"
+        android:letterSpacing="0.05"
         android:text="00:00"
         android:textColor="#8F8F8F"
-        android:letterSpacing="0.05"
         android:textSize="45sp"
-        android:fontFamily="@font/rubik"
-        android:layout_marginTop="10dp"
-        app:layout_constraintHorizontal_bias="0.05"
         app:layout_constraintEnd_toStartOf="@id/btn_expandableOC"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_setTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Не установлен"
         android:layout_marginTop="15dp"
-        android:textSize="13sp"
-        app:layout_constraintHorizontal_bias="0.1"
-        android:padding="5dp"
         android:layout_marginBottom="10dp"
-        app:layout_constraintTop_toBottomOf="@id/tv_clock"
-        app:layout_constraintStart_toStartOf="@id/tv_clock"
+        android:padding="5dp"
+        android:text="Не установлен"
+        android:textSize="13sp"
         app:layout_constraintBottom_toTopOf="@id/expandable_layout"
-        app:layout_constraintEnd_toEndOf="@id/tv_clock"/>
+        app:layout_constraintEnd_toEndOf="@id/tv_clock"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="@id/tv_clock"
+        app:layout_constraintTop_toBottomOf="@id/tv_clock" />
 
     <com.google.android.material.materialswitch.MaterialSwitch
         android:id="@+id/switch_alarm_fragment"
+        app:trackTint="@color/track_color"
+        app:thumbTint="@color/thumb_color"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/btn_expandableOC"
         android:layout_marginEnd="15dp"
+        app:layout_constraintBottom_toTopOf="@id/expandable_layout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/expandable_layout"/>
+        app:layout_constraintTop_toBottomOf="@id/btn_expandableOC" />
 
 
     <androidx.cardview.widget.CardView
         android:id="@+id/btn_expandableOC"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:backgroundTint="#42474E"
-        android:background="@drawable/ripple_effect_btn_expandable_oc"
-        android:clickable="true"
-        app:cardElevation="10dp"
         android:layout_margin="8dp"
-        android:padding="8dp"
-        app:layout_constraintBottom_toTopOf="@id/switch_alarm_fragment"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="25dp"
+        android:backgroundTint="#42474E"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="@drawable/ripple_effect_btn_expandable_oc"
+        android:padding="8dp"
         app:cardCornerRadius="20dp"
+        app:cardElevation="10dp"
         app:cardPreventCornerOverlap="true"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/switch_alarm_fragment"
         app:layout_constraintEnd_toEndOf="parent"
-        android:focusable="true">
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
+            android:id="@+id/iv_btn_expandableLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/downarrow"
-            android:layout_gravity="center_horizontal|center_vertical"/>
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:src="@drawable/downarrow" />
 
 
     </androidx.cardview.widget.CardView>
@@ -82,12 +85,13 @@
         android:id="@+id/expandable_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
         android:layout_marginHorizontal="10dp"
-        app:layout_constraintTop_toBottomOf="@id/tv_setTime"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="10dp"
+        app:el_expanded="false"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_setTime">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -111,95 +115,102 @@
 
 
                     <TextView
+                        android:id="@+id/tv_monday"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_marginHorizontal="4dp"
-                        android:fontFamily="@font/rubik"
-                        android:clickable="true"
                         android:background="@drawable/ripple_effect_daysofweek"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:fontFamily="@font/rubik"
                         android:gravity="center"
                         android:text="П"
-                        android:textColor="@color/white"
-                        android:textSize="15dp"
-                        android:focusable="true" />
+                        android:textColor="@color/colorTextViewDaysDefault"
+                        android:textSize="15dp" />
 
                     <TextView
+                        android:id="@+id/tv_tuesday"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_marginHorizontal="4dp"
                         android:background="@drawable/ripple_effect_daysofweek"
-                        android:gravity="center"
                         android:clickable="true"
+                        android:focusable="true"
                         android:fontFamily="@font/rubik"
+                        android:gravity="center"
                         android:text="В"
-                        android:textColor="@color/white"
-                        android:textSize="15dp"
-                        android:focusable="true" />
+                        android:textColor="@color/colorTextViewDaysDefault"
+                        android:textSize="15dp" />
 
                     <TextView
+                        android:id="@+id/tv_wednesday"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_marginHorizontal="4dp"
                         android:background="@drawable/ripple_effect_daysofweek"
-                        android:gravity="center"
                         android:clickable="true"
+                        android:focusable="true"
                         android:fontFamily="@font/rubik"
+                        android:gravity="center"
                         android:text="С"
-                        android:textColor="@color/white"
-                        android:textSize="15dp"
-                        android:focusable="true" />
+                        android:textColor="@color/colorTextViewDaysDefault"
+                        android:textSize="15dp" />
 
                     <TextView
+                        android:id="@+id/tv_thursday"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_marginHorizontal="4dp"
                         android:background="@drawable/ripple_effect_daysofweek"
-                        android:gravity="center"
                         android:clickable="true"
+                        android:focusable="true"
                         android:fontFamily="@font/rubik"
+                        android:gravity="center"
                         android:text="Ч"
-                        android:textColor="@color/white"
-                        android:textSize="15dp"
-                        android:focusable="true" />
+                        android:textColor="@color/colorTextViewDaysDefault"
+                        android:textSize="15dp" />
 
                     <TextView
+                        android:id="@+id/tv_friday"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_marginHorizontal="4dp"
                         android:background="@drawable/ripple_effect_daysofweek"
-                        android:gravity="center"
                         android:clickable="true"
+                        android:focusable="true"
                         android:fontFamily="@font/rubik"
+                        android:gravity="center"
                         android:text="П"
-                        android:textColor="@color/white"
-                        android:textSize="15dp"
-                        android:focusable="true" />
+                        android:textColor="@color/colorTextViewDaysDefault"
+                        android:textSize="15dp" />
 
                     <TextView
+                        android:id="@+id/tv_saturday"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_marginHorizontal="4dp"
                         android:background="@drawable/ripple_effect_daysofweek"
-                        android:gravity="center"
                         android:clickable="true"
+                        android:focusable="true"
                         android:fontFamily="@font/rubik"
+                        android:gravity="center"
                         android:text="С"
-                        android:textColor="@color/white"
-                        android:textSize="15dp"
-                        android:focusable="true" />
+                        android:textColor="@color/colorTextViewDaysDefault"
+                        android:textSize="15dp" />
 
                     <TextView
+                        android:id="@+id/tv_sunday"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_marginHorizontal="4dp"
                         android:background="@drawable/ripple_effect_daysofweek"
-                        android:gravity="center"
                         android:clickable="true"
+                        android:focusable="true"
                         android:fontFamily="@font/rubik"
+                        android:gravity="center"
                         android:text="В"
-                        android:textColor="@color/white"
-                        android:textSize="15dp"
-                        android:focusable="true" />
+                        android:textColor="@color/colorTextViewDaysDefault"
+                        android:textSize="15dp" />
                 </LinearLayout>
 
 
@@ -210,67 +221,67 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:drawablePadding="10dp"
-                android:fontFamily="@font/rubik"
                 android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:drawablePadding="10dp"
+                android:focusable="true"
+                android:fontFamily="@font/rubik"
                 android:gravity="center_vertical"
                 android:padding="5dp"
-                android:clickable="true"
                 android:paddingStart="10dp"
                 android:text="Установить буд."
                 android:textColor="@color/white"
                 android:textSize="18sp"
+                app:drawableEndCompat="@drawable/ic_add_circle"
+                app:drawableStartCompat="@drawable/ic_alarm"
+                app:drawableTint="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/ll_daysWeek"
-                app:drawableStartCompat="@drawable/ic_alarm"
-                app:drawableEndCompat="@drawable/ic_add_circle"
-                app:drawableTint="@color/white"
-                android:focusable="true" />
+                app:layout_constraintTop_toBottomOf="@id/ll_daysWeek" />
 
             <TextView
                 android:id="@+id/tv_melodiya"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:drawablePadding="10dp"
-                android:fontFamily="@font/rubik"
                 android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:drawablePadding="10dp"
+                android:focusable="true"
+                android:fontFamily="@font/rubik"
                 android:gravity="center_vertical"
                 android:padding="5dp"
-                android:clickable="true"
                 android:paddingStart="10dp"
                 android:text="По умолчанию(Homecoming)"
                 android:textColor="@color/white"
                 android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_setAnAlarm"
                 app:drawableStartCompat="@drawable/bell"
                 app:drawableTint="@color/white"
-                android:focusable="true" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_setAnAlarm" />
 
             <TextView
                 android:id="@+id/tv_vibration"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
                 android:drawablePadding="10dp"
+                android:focusable="true"
                 android:fontFamily="@font/rubik"
                 android:gravity="center_vertical"
                 android:padding="5dp"
-                android:clickable="true"
-                android:background="?android:attr/selectableItemBackground"
                 android:paddingStart="10dp"
                 android:text="Вибросигнал"
                 android:textColor="@color/white"
                 android:textSize="18sp"
+                app:drawableEndCompat="@drawable/ic_check"
+                app:drawableStartCompat="@drawable/ic_vibration"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_melodiya"
-                app:drawableStartCompat="@drawable/ic_vibration"
-                app:drawableEndCompat="@drawable/ic_check"
-                android:focusable="true" />
+                app:layout_constraintTop_toBottomOf="@id/tv_melodiya" />
 
 
             <TextView
@@ -278,43 +289,28 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:drawablePadding="10dp"
-                android:fontFamily="@font/rubik"
                 android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:drawablePadding="10dp"
+                android:focusable="true"
+                android:fontFamily="@font/rubik"
                 android:gravity="center_vertical"
                 android:padding="5dp"
-                android:clickable="true"
                 android:paddingStart="10dp"
                 android:text="Удалить"
                 android:textColor="@color/white"
                 android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_vibration"
                 app:drawableStartCompat="@drawable/ic_delete"
                 app:drawableTint="@color/white"
-                android:focusable="true" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_vibration" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-
-
-
-
-
-
     </net.cachapa.expandablelayout.ExpandableLayout>
-
-
-
-
-
-
-
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

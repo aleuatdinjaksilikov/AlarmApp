@@ -14,4 +14,6 @@
     <color name="colorFloatActionButton">#93CCFF</color>
 
     <color name="statusBarColor">#202429</color>
+    <color name="colorTextViewDaysDefault">#8B8C8E</color>
+
 </resources>
