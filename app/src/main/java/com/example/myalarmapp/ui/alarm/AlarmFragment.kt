@@ -1,5 +1,6 @@
 package com.example.myalarmapp.ui.alarm
 
+import android.annotation.SuppressLint
 import android.graphics.Color
 import android.icu.util.Calendar
 import android.os.Bundle
@@ -16,6 +17,7 @@ import com.example.myalarmapp.data.AppDatabase
 import com.example.myalarmapp.data.dao.AppDao
 import com.example.myalarmapp.data.models.AlarmData
 import com.example.myalarmapp.databinding.FragmentAlarmBinding
+import com.example.myalarmapp.databinding.RcItemAlarmBinding
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.MaterialTimePicker.INPUT_MODE_CLOCK
 import com.google.android.material.timepicker.TimeFormat
@@ -25,9 +27,6 @@ class AlarmFragment:Fragment(R.layout.fragment_alarm) {
     private lateinit var binding: FragmentAlarmBinding
     private var adapter = AlarmAdapter()
     private lateinit var dao: AppDao
-    private var isSelectedDay1:Boolean = false
-    private var isSelectedDay2:Boolean = false
-    private var isSelectedDay3:Boolean = false
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -36,7 +35,6 @@ class AlarmFragment:Fragment(R.layout.fragment_alarm) {
 
         initVariable()
         initListeners()
-
     }
 
     private fun initVariable(){
@@ -47,10 +45,15 @@ class AlarmFragment:Fragment(R.layout.fragment_alarm) {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private fun initListeners(){
 
         binding.btnAddAlarm.setOnClickListener {
             openTimePicker()
+        }
+
+        adapter.setOnClickTvClock { alarmData,binding ->
+            openTimePickerTvClock(alarmData,binding)
         }
 
         adapter.setOnSwitchClickListener { binding,alarmData ->
@@ -71,80 +74,9 @@ class AlarmFragment:Fragment(R.layout.fragment_alarm) {
             }
         }
 
-        adapter.setOnClickDaysOfWeek1 { rcItemAlarmBinding, alarmData,list,->
-
-            val day = list[0]
-            if (day.isChecked){
-                rcItemAlarmBinding.tvWednesday.setBackgroundResource(R.drawable.ripple_effect_daysofweek)
-                rcItemAlarmBinding.tvWednesday.setTextColor(resources.getColor(R.color.colorTextViewDaysDefault))
-                day.isChecked = false
-            }else{
-                rcItemAlarmBinding.tvWednesday.setBackgroundResource(R.drawable.ripple_effect_daysofweek_selected)
-                rcItemAlarmBinding.tvWednesday.setTextColor(Color.parseColor("#ffffff"))
-                day.isChecked = true
-            }
-
-
-//            when(day){
-//                1-> {
-//                    if (isSelectedDay1){
-//                        rcItemAlarmBinding.tvMonday.setBackgroundResource(R.drawable.ripple_effect_daysofweek)
-//                        rcItemAlarmBinding.tvMonday.setTextColor(resources.getColor(R.color.colorTextViewDaysDefault))
-//                        isSelectedDay1 = false
-//                    }else{
-//                        rcItemAlarmBinding.tvMonday.setBackgroundResource(R.drawable.ripple_effect_daysofweek_selected)
-//                        rcItemAlarmBinding.tvMonday.setTextColor(Color.parseColor("#ffffff"))
-//                        isSelectedDay1 = true
-//                    }
-//                }
-//                2->{
-//
-//                    if (isSelectedDay2){
-//                        rcItemAlarmBinding.tvTuesday.setBackgroundResource(R.drawable.ripple_effect_daysofweek)
-//                        rcItemAlarmBinding.tvTuesday.setTextColor(resources.getColor(R.color.colorTextViewDaysDefault))
-//                        isSelectedDay2 = false
-//                    }else{
-//                        rcItemAlarmBinding.tvTuesday.setBackgroundResource(R.drawable.ripple_effect_daysofweek_selected)
-//                        rcItemAlarmBinding.tvTuesday.setTextColor(Color.parseColor("#ffffff"))
-//                        isSelectedDay2 = true
-//                    }
-//                }
-//            }
-        }
-
-        adapter.setOnClickDaysOfWeek2 { rcItemAlarmBinding, alarmData,list ->
-
-            var day = list[1]
-            if (day.isChecked){
-                rcItemAlarmBinding.tvTuesday.setBackgroundResource(R.drawable.ripple_effect_daysofweek)
-                rcItemAlarmBinding.tvTuesday.setTextColor(resources.getColor(R.color.colorTextViewDaysDefault))
-                day.isChecked = false
-            }else{
-                rcItemAlarmBinding.tvTuesday.setBackgroundResource(R.drawable.ripple_effect_daysofweek_selected)
-                rcItemAlarmBinding.tvTuesday.setTextColor(Color.parseColor("#ffffff"))
-                day.isChecked = true
-            }
-
-//            if (isSelectedDay2){
-//                rcItemAlarmBinding.tvTuesday.setBackgroundResource(R.drawable.ripple_effect_daysofweek)
-//                rcItemAlarmBinding.tvTuesday.setTextColor(resources.getColor(R.color.colorTextViewDaysDefault))
-//                isSelectedDay2 = false
-//            }else{
-//                rcItemAlarmBinding.tvTuesday.setBackgroundResource(R.drawable.ripple_effect_daysofweek_selected)
-//                rcItemAlarmBinding.tvTuesday.setTextColor(Color.parseColor("#ffffff"))
-//                isSelectedDay2 = true
-//            }
-        }
-
-        adapter.setOnClickDaysOfWeek3 { rcItemAlarmBinding, alarmData ->
-            if (isSelectedDay3){
-                rcItemAlarmBinding.tvWednesday.setBackgroundResource(R.drawable.ripple_effect_daysofweek)
-                rcItemAlarmBinding.tvWednesday.setTextColor(resources.getColor(R.color.colorTextViewDaysDefault))
-                isSelectedDay3 = false
-            }else{
-                rcItemAlarmBinding.tvWednesday.setBackgroundResource(R.drawable.ripple_effect_daysofweek_selected)
-                rcItemAlarmBinding.tvWednesday.setTextColor(Color.parseColor("#ffffff"))
-                isSelectedDay3 = true
+        adapter.setOnClickDaysOfWeek { alarmData ->
+            lifecycleScope.launchWhenResumed {
+                dao.updateAlarm(alarmData)
             }
         }
 
@@ -196,8 +128,67 @@ class AlarmFragment:Fragment(R.layout.fragment_alarm) {
             }
 
             lifecycleScope.launchWhenResumed {
-                dao.addAlarm(AlarmData(0,hour.toInt(),minute.toInt(),true,2))
+                dao.addAlarm(AlarmData(0,hour,minute,true,"",
+                    isMondayActivated = false,
+                    isTuesdayActivated = false,
+                    isWednesdayActivated = false,
+                    isThursdayActivated = false,
+                    isFridayActivated = false,
+                    isSaturdayActivated = false,
+                    isSundayActivated = false
+                ))
                 adapter.list = dao.getAllAlarms().toMutableList()
+            }
+
+        }
+        picker.addOnNegativeButtonClickListener {
+            Log.d("TimeLOg","Negative")
+        }
+        picker.addOnCancelListener {
+            Log.d("TimeLOg","Cancel")
+        }
+        picker.addOnDismissListener {
+            Log.d("TimeLOg","Dismiss")
+        }
+    }
+
+    private fun openTimePickerTvClock(alarmData: AlarmData,binding: RcItemAlarmBinding) {
+
+        val isSystem24Hour = DateFormat.is24HourFormat(requireContext())
+        val clockFormat = if (isSystem24Hour) TimeFormat.CLOCK_24H else TimeFormat.CLOCK_12H
+
+        val calendar = Calendar.getInstance()
+
+        val picker = MaterialTimePicker.Builder()
+            .setTimeFormat(clockFormat)
+            .setHour(calendar.get(Calendar.HOUR_OF_DAY))
+            .setMinute(calendar.get(Calendar.MINUTE))
+            .setInputMode(INPUT_MODE_CLOCK)
+            .setTheme(R.style.MyThemeTimePicker)
+            .setTitleText("Выбор времени")
+            .build()
+        picker.show(parentFragmentManager,"TAG")
+
+
+        picker.addOnPositiveButtonClickListener {
+
+            var hour = picker.hour.toString()
+            var minute = picker.minute.toString()
+
+            if (minute.length<2){
+                minute = "0${minute}"
+            }
+            if (hour.length<2){
+                hour = "0${hour}"
+            }
+
+            alarmData.timeHour = hour
+            alarmData.timeMinute = minute
+
+            binding.tvClock.text = "${hour}:${minute}"
+
+            lifecycleScope.launchWhenResumed {
+                dao.updateAlarm(alarmData)
             }
 
         }

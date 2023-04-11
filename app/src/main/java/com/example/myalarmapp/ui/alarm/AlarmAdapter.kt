@@ -1,5 +1,6 @@
 package com.example.myalarmapp.ui.alarm
 
+import android.annotation.SuppressLint
 import android.graphics.Color
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,17 +9,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.myalarmapp.R
 import com.example.myalarmapp.databinding.RcItemAlarmBinding
 import com.example.myalarmapp.data.models.AlarmData
-import com.example.myalarmapp.data.models.DaysData
 
 class AlarmAdapter:RecyclerView.Adapter<AlarmAdapter.MyViewHolder>() {
+
     private var onClickSwitchListener : ((RcItemAlarmBinding, AlarmData)->Unit)? = null
     private var onClickDeleteItemListener : ((RcItemAlarmBinding, AlarmData, position:Int)->Unit)? = null
+    private var onClickDaysOfWeekListener : ((AlarmData)->Unit)? = null
+    private var onClickTvClockListener : ((AlarmData,RcItemAlarmBinding)->Unit)? = null
 
-    private var onClickDaysOfWeekListener1 : ((RcItemAlarmBinding, AlarmData, MutableList<DaysData>)->Unit)? = null
-    private var onClickDaysOfWeekListener2 : ((RcItemAlarmBinding, AlarmData, MutableList<DaysData>)->Unit)? = null
-    private var onClickDaysOfWeekListener3 : ((RcItemAlarmBinding, AlarmData)->Unit)? = null
-
-    var daysDataList = mutableListOf<DaysData>()
 
     var list = mutableListOf<AlarmData>()
     set(value) {
@@ -27,18 +25,19 @@ class AlarmAdapter:RecyclerView.Adapter<AlarmAdapter.MyViewHolder>() {
     }
 
     inner class MyViewHolder(private val binding: RcItemAlarmBinding):RecyclerView.ViewHolder(binding.root){
+        @SuppressLint("SetTextI18n")
         fun setData(alarmData: AlarmData, position: Int){
 
             binding.tvClock.text = "${alarmData.timeHour}:${alarmData.timeMinute}"
-            Log.d("TimeTime","${alarmData.timeHour}:${alarmData.timeMinute}")
+            binding.tvSetTime.text = isDayClicked(alarmData)
 
-            daysDataList.add(DaysData(binding.tvMonday,false))
-            daysDataList.add(DaysData(binding.tvTuesday,false))
-            daysDataList.add(DaysData(binding.tvWednesday,false))
-            daysDataList.add(DaysData(binding.tvThursday,false))
-            daysDataList.add(DaysData(binding.tvFriday,false))
-            daysDataList.add(DaysData(binding.tvSaturday,false))
-            daysDataList.add(DaysData(binding.tvSunday,false))
+            binding.tvMonday.isSelected = alarmData.isMondayActivated
+            binding.tvTuesday.isSelected = alarmData.isTuesdayActivated
+            binding.tvWednesday.isSelected = alarmData.isWednesdayActivated
+            binding.tvThursday.isSelected = alarmData.isThursdayActivated
+            binding.tvFriday.isSelected = alarmData.isFridayActivated
+            binding.tvSaturday.isSelected = alarmData.isSaturdayActivated
+            binding.tvSunday.isSelected = alarmData.isSundayActivated
 
 
             if(alarmData.installed){
@@ -50,12 +49,18 @@ class AlarmAdapter:RecyclerView.Adapter<AlarmAdapter.MyViewHolder>() {
             }
 
 
+            binding.tvClock.setOnClickListener {
+                onClickTvClockListener?.invoke(alarmData,binding)
+            }
+
             binding.btnExpandableOC.setOnClickListener {
                 if (binding.expandableLayout.isExpanded){
                     binding.expandableLayout.collapse()
+                    binding.expandableLayoutAddLabel.collapse()
                     binding.ivBtnExpandableLayout.setImageResource(R.drawable.downarrow)
                 }else{
                     binding.expandableLayout.expand()
+                    binding.expandableLayoutAddLabel.expand()
                     binding.ivBtnExpandableLayout.setImageResource(R.drawable.ic_up_arrow)
                 }
             }
@@ -63,25 +68,65 @@ class AlarmAdapter:RecyclerView.Adapter<AlarmAdapter.MyViewHolder>() {
             binding.root.setOnClickListener {
                 if (binding.expandableLayout.isExpanded){
                     binding.expandableLayout.collapse()
+                    binding.expandableLayoutAddLabel.collapse()
                     binding.ivBtnExpandableLayout.setImageResource(R.drawable.downarrow)
                 }else{
                     binding.expandableLayout.expand()
+                    binding.expandableLayoutAddLabel.expand()
                     binding.ivBtnExpandableLayout.setImageResource(R.drawable.ic_up_arrow)
                 }
             }
 
             binding.tvMonday.setOnClickListener {
-                onClickDaysOfWeekListener1?.invoke(binding,alarmData,daysDataList)
+                binding.tvMonday.isSelected = alarmData.isMondayActivated.not()
+                alarmData.isMondayActivated = alarmData.isMondayActivated.not()
+                binding.tvSetTime.text = isDayClicked(alarmData)
+                alarmData.textDaysSelected = isDayClicked(alarmData)
+                onClickDaysOfWeekListener?.invoke(alarmData)
+
             }
             binding.tvTuesday.setOnClickListener {
-                onClickDaysOfWeekListener2?.invoke(binding,alarmData,daysDataList)
+                binding.tvTuesday.isSelected = alarmData.isTuesdayActivated.not()
+                alarmData.isTuesdayActivated = alarmData.isTuesdayActivated.not()
+                binding.tvSetTime.text = isDayClicked(alarmData)
+                alarmData.textDaysSelected = isDayClicked(alarmData)
+                onClickDaysOfWeekListener?.invoke(alarmData)
             }
-
-
             binding.tvWednesday.setOnClickListener {
-                onClickDaysOfWeekListener3?.invoke(binding,alarmData)
+                binding.tvWednesday.isSelected = alarmData.isWednesdayActivated.not()
+                alarmData.isWednesdayActivated = alarmData.isWednesdayActivated.not()
+                binding.tvSetTime.text = isDayClicked(alarmData)
+                alarmData.textDaysSelected = isDayClicked(alarmData)
+                onClickDaysOfWeekListener?.invoke(alarmData)
             }
-
+            binding.tvThursday.setOnClickListener {
+                binding.tvThursday.isSelected = alarmData.isThursdayActivated.not()
+                alarmData.isThursdayActivated = alarmData.isThursdayActivated.not()
+                binding.tvSetTime.text = isDayClicked(alarmData)
+                alarmData.textDaysSelected = isDayClicked(alarmData)
+                onClickDaysOfWeekListener?.invoke(alarmData)
+            }
+            binding.tvFriday.setOnClickListener {
+                binding.tvFriday.isSelected = alarmData.isFridayActivated.not()
+                alarmData.isFridayActivated = alarmData.isFridayActivated.not()
+                binding.tvSetTime.text = isDayClicked(alarmData)
+                alarmData.textDaysSelected = isDayClicked(alarmData)
+                onClickDaysOfWeekListener?.invoke(alarmData)
+            }
+            binding.tvSaturday.setOnClickListener {
+                binding.tvSaturday.isSelected = alarmData.isSaturdayActivated.not()
+                alarmData.isSaturdayActivated = alarmData.isSaturdayActivated.not()
+                binding.tvSetTime.text = isDayClicked(alarmData)
+                alarmData.textDaysSelected = isDayClicked(alarmData)
+                onClickDaysOfWeekListener?.invoke(alarmData)
+            }
+            binding.tvSunday.setOnClickListener {
+                binding.tvSunday.isSelected = alarmData.isSundayActivated.not()
+                alarmData.isSundayActivated = alarmData.isSundayActivated.not()
+                binding.tvSetTime.text = isDayClicked(alarmData)
+                alarmData.textDaysSelected = isDayClicked(alarmData)
+                onClickDaysOfWeekListener?.invoke(alarmData)
+            }
 
             binding.switchAlarmFragment.setOnClickListener {
                 onClickSwitchListener?.invoke(binding,alarmData)
@@ -113,13 +158,47 @@ class AlarmAdapter:RecyclerView.Adapter<AlarmAdapter.MyViewHolder>() {
         onClickDeleteItemListener = block
     }
 
-    fun setOnClickDaysOfWeek1(block:(RcItemAlarmBinding, AlarmData, MutableList<DaysData>)->Unit){
-        onClickDaysOfWeekListener1 = block
+    fun setOnClickDaysOfWeek(block:(AlarmData)->Unit){
+        onClickDaysOfWeekListener = block
     }
-    fun setOnClickDaysOfWeek2(block:(RcItemAlarmBinding, AlarmData, MutableList<DaysData>)->Unit){
-        onClickDaysOfWeekListener2 = block
+
+    fun setOnClickTvClock(block:(AlarmData,RcItemAlarmBinding)->Unit){
+        onClickTvClockListener = block
     }
-    fun setOnClickDaysOfWeek3(block:(RcItemAlarmBinding, AlarmData)->Unit){
-        onClickDaysOfWeekListener3 = block
+
+    private fun isDayClicked(alarmData: AlarmData):String{
+
+        val listDayText = mutableListOf<String>()
+
+        if (alarmData.isMondayActivated) listDayText.add("Пн") else listDayText.remove("Пн")
+        if (alarmData.isTuesdayActivated) listDayText.add("Вт") else listDayText.remove("Вт")
+        if (alarmData.isWednesdayActivated) listDayText.add("Ср") else listDayText.remove("Ср")
+        if (alarmData.isThursdayActivated) listDayText.add("Чт") else listDayText.remove("Чт")
+        if (alarmData.isFridayActivated) listDayText.add("Пт") else listDayText.remove("Пт")
+        if (alarmData.isSaturdayActivated) listDayText.add("Сб") else listDayText.remove("Сб")
+        if (alarmData.isSundayActivated) listDayText.add("Вс") else listDayText.remove("Вс")
+
+        if (listDayText.isEmpty()){
+            return "Не установлено"
+        }else if (listDayText.size == 7){
+            return "Каждый день"
+        }
+
+
+
+        var res = ""
+        listDayText.forEach {
+            if (listDayText.indexOf(it)==listDayText.lastIndex) {
+                res+=it
+            }else{
+                res+="$it,"
+            }
+        }
+
+        Log.d("ListEms",res)
+
+        return res
     }
+
+
 }

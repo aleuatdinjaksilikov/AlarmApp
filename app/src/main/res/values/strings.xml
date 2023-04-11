@@ -17,4 +17,11 @@
     <string name="_00">00</string>
     <string name="_0">0</string>
     <string name="Начать">Начать</string>
+    <string name="text_sunday">В</string>
+    <string name="text_saturday">С</string>
+    <string name="text_friday">П</string>
+    <string name="text_thursday">Ч</string>
+    <string name="text_wednesday">С</string>
+    <string name="text_tuesday">В</string>
+    <string name="text_monday">П</string>
 </resources>

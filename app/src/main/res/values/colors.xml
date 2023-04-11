@@ -15,5 +15,8 @@
 
     <color name="statusBarColor">#202429</color>
     <color name="colorTextViewDaysDefault">#8B8C8E</color>
+    <color name="switch_track_color_default">#40474D</color>
+    <color name="switch_track_color_actived">#014C69</color>
+    <color name="default_tv_clock_color">#8F8F8F</color>
 
 </resources>

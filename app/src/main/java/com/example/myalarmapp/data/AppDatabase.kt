@@ -8,7 +8,7 @@ import com.example.myalarmapp.data.dao.AppDao
 import com.example.myalarmapp.data.models.AlarmData
 
 
-@Database(entities = [AlarmData::class], version = 1)
+@Database(entities = [AlarmData::class], version = 3)
 abstract class AppDatabase:RoomDatabase() {
 
     abstract fun getDao(): AppDao
