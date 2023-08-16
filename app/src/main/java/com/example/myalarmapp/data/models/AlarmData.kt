@@ -12,6 +12,7 @@ data class AlarmData (
     var timeMinute : String,
     var installed : Boolean,
     var textDaysSelected : String,
+    var textLabel : String,
     var isMondayActivated : Boolean = false,
     var isTuesdayActivated : Boolean = false,
     var isWednesdayActivated : Boolean = false,

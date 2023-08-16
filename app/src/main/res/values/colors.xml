@@ -10,7 +10,7 @@
 
     <color name="ActiveIndicator">#9DADBE</color>
     <color name="colorBottomNavBar">#212A31</color>
-    <color name="bg_fragments">#1A1C1E</color>
+    <color name="bg_fragments">#181C1F</color>
     <color name="colorFloatActionButton">#93CCFF</color>
 
     <color name="statusBarColor">#202429</color>
@@ -18,5 +18,12 @@
     <color name="switch_track_color_default">#40474D</color>
     <color name="switch_track_color_actived">#014C69</color>
     <color name="default_tv_clock_color">#8F8F8F</color>
+    <color name="alarm_item_color">#1D2528</color>
+    <color name="dialog_blue_color">#7ECFF6</color>
+    <color name="dialog_backround">#222F35</color>
+    <color name="color_grey">#919A9E</color>
+    <color name="color_red_itemDelete">#F2B8B6</color>
+    <color name="bg_slider_color">#0f4a74</color>
+
 
 </resources>

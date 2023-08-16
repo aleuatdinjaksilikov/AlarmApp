@@ -6,6 +6,8 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.example.myalarmapp.R
 import com.example.myalarmapp.databinding.FragmentTimerBinding
+import us.romanandroiddev.scheduled_notification_builder.ScheduledNotification
+import us.romanandroiddev.scheduled_notification_builder.data.models.NotificationType
 
 class TimerFragment :Fragment(R.layout.fragment_timer){
     private lateinit var binding: FragmentTimerBinding

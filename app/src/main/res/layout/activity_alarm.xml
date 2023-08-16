@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_fragments"
+    tools:context=".AlarmActivity">
+
+
+    <TextView
+        android:id="@+id/tv_alarm_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/rubik"
+        android:letterSpacing="0.2"
+        android:textColor="@color/white"
+        android:textSize="108sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.55"
+        tools:text="13:20" />
+
+    <TextView
+        android:id="@+id/tv_alarm_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/rubik"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@id/tv_alarm_time"
+        app:layout_constraintStart_toStartOf="@id/tv_alarm_time"
+        app:layout_constraintTop_toBottomOf="@id/tv_alarm_time"
+        tools:text="@string/Будильник" />
+
+    <View
+        android:id="@+id/bg_slider"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        android:layout_marginHorizontal="16dp"
+        android:background="@drawable/bg_rect_64"
+        android:backgroundTint="@color/alarm_item_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_alarm_name" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ic_turn_off"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginVertical="8dp"
+        android:background="@drawable/bg_rect_64"
+        android:backgroundTint="@color/bg_slider_color"
+        android:padding="18dp"
+        android:translationZ="10dp"
+        android:src="@drawable/ic_alarm"
+        app:layout_constraintBottom_toBottomOf="@id/bg_slider"
+        app:layout_constraintDimensionRatio="1.5:1"
+        app:layout_constraintEnd_toEndOf="@id/bg_slider"
+        app:layout_constraintStart_toStartOf="@id/bg_slider"
+        app:layout_constraintTop_toTopOf="@id/bg_slider" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/rubik"
+        android:text="@string/put_aside"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@id/ic_turn_off"
+        app:layout_constraintEnd_toStartOf="@id/ic_turn_off"
+        app:layout_constraintStart_toStartOf="@id/bg_slider"
+        app:layout_constraintTop_toTopOf="@id/ic_turn_off" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/rubik"
+        android:text="@string/turn_off"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@id/ic_turn_off"
+        app:layout_constraintEnd_toEndOf="@id/bg_slider"
+        app:layout_constraintStart_toEndOf="@id/ic_turn_off"
+        app:layout_constraintTop_toTopOf="@id/ic_turn_off" />
+
+    <View
+        android:id="@+id/bg_animation_put_aside"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:alpha="0.5"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/bg_rect_64"
+        android:backgroundTint="@color/bg_slider_color"
+        app:layout_constraintBottom_toBottomOf="@id/ic_turn_off"
+        app:layout_constraintEnd_toEndOf="@id/ic_turn_off"
+        app:layout_constraintStart_toStartOf="@id/bg_slider"
+        app:layout_constraintTop_toTopOf="@id/ic_turn_off" />
+
+    <View
+        android:id="@+id/bg_animation_turn_off"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="8dp"
+        android:alpha="0.5"
+        android:visibility="gone"
+        android:layout_marginStart="16dp"
+        android:background="@drawable/bg_rect_64"
+        android:backgroundTint="@color/bg_slider_color"
+        app:layout_constraintBottom_toBottomOf="@id/ic_turn_off"
+        app:layout_constraintEnd_toEndOf="@id/bg_slider"
+        app:layout_constraintStart_toStartOf="@id/ic_turn_off"
+        app:layout_constraintTop_toTopOf="@id/ic_turn_off" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -37,13 +37,24 @@
         <item name="android:textColor">#FFFFFF</item>
     </style>
 
-<!--        <style name="MyTimePickerDialogTheme" parent="ThemeOverlay.Material3.MaterialTimePicker">-->
-<!--            <item name="colorSurface">#202429</item>-->
-<!--            <item name="colorPrimary">#2A2E33</item>-->
-<!--            <item name="colorOnPrimary">#202429</item>-->
-<!--            <item name="colorControlActivated">#2A2E33</item>-->
-<!--            <item name="colorControlNormal">#FFFFFF</item>-->
-<!--        </style>-->
+    <style name="DialogThemeTransparent" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:windowBackground">@drawable/bg_dialog_layout</item>
+        <item name="colorAccent">@color/dialog_blue_color</item>
+        <item name="colorOnPrimary">@color/dialog_blue_color</item>
+    </style>
+
+   <style name="MyThemeDatePicker" parent="ThemeOverlay.Material3.MaterialTimePicker">
+       <item name="colorOnSurface">@color/white</item>
+       <item name="colorOnPrimaryContainer">@color/bg_fragments</item>
+       <item name="colorOnPrimary">@color/dialog_blue_color</item>
+       <item name="borderlessButtonStyle">@style/borderlessButtonStyle</item>
+   </style>
+
+    <style name="DatePickerButtonStyle" parent="ThemeOverlay.Material3.Button.TextButton">
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+    
+
 
 
 </resources>

@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs.kotlin'
 }
 
 android {
@@ -39,6 +40,10 @@ android {
 
 dependencies {
 
+    implementation 'com.github.romanandroiddev:Scheduled-Notification:1.0.2'
+
+    //Swipe Decorator
+    implementation 'it.xabaras.android:recyclerview-swipedecorator:1.4'
     //Room
     def room_version = "2.5.1"
     implementation("androidx.room:room-runtime:$room_version")
@@ -54,7 +59,7 @@ dependencies {
 
     implementation("androidx.fragment:fragment-ktx:1.5.6")
 
-    implementation 'androidx.core:core-ktx:1.9.0'
+    implementation 'androidx.core:core-ktx:1.7.10'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.8.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'

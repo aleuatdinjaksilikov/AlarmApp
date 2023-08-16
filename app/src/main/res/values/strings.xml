@@ -24,4 +24,11 @@
     <string name="text_wednesday">С</string>
     <string name="text_tuesday">В</string>
     <string name="text_monday">П</string>
+    <string name="text_ok">ОК</string>
+    <string name="text_cancel">Отмена</string>
+    <string name="text_opisaniya">Описание</string>
+    <string name="text_addLabel">Добавить ярлык</string>
+    <string name="search_countries">Поиск города</string>
+    <string name="turn_off">Выключить</string>
+    <string name="put_aside">Отложить</string>
 </resources>
